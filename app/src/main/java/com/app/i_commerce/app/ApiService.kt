@@ -18,14 +18,14 @@ interface ApiService {
         @Field("name") name :String,
         @Field("email") email :String,
         @Field("password") password :String
-    ): Call<ResponseBody>
+    ): Call<ResponModel>
 
     @FormUrlEncoded
     @POST("login")
     fun login(
         @Field("email") email :String,
         @Field("password") password :String
-    ): Call<ResponseBody>
+    ): Call<ResponModel>
 
     @GET("produk")
     fun getProduk(): Call<ResponModel>
