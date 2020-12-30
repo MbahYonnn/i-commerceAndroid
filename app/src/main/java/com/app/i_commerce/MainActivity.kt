@@ -1,5 +1,7 @@
 package com.app.i_commerce
 
+import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,9 +9,11 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.app.i_commerce.activity.LoginActivity
 import com.app.i_commerce.fragment.AccountFragment
 import com.app.i_commerce.fragment.CartFragment
 import com.app.i_commerce.fragment.HomeFragment
+import com.app.i_commerce.helper.SharedPref
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -22,11 +26,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var menu: Menu
     private lateinit var menuItem: MenuItem
     private lateinit var BottomNavigationView: BottomNavigationView
+    private var statusLogin = false
+    private lateinit var s: SharedPref
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        s = SharedPref(this)
         setupBotNav()
     }
 
@@ -50,7 +57,12 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 R.id.menu_account -> {
-                    callFragment(2,fragmentAccount)
+                    if (s.getStatusLogin()){
+                        callFragment(2,fragmentAccount)
+                    } else{
+                        startActivity(Intent(this, LoginActivity::class.java))
+                    }
+
                 }
             }
             false
