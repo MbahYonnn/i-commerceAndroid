@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
  * Created by Leon Truzqy Zainun on 30,December,2020
  */
 object ApiConfig {
-    private const val BASE_URL = "http://192.168.1.12/blog/public/api/"
+    private const val BASE_URL = "http://192.168.1.27/blog/public/api/"
     private val client: Retrofit
         get() {
             val gson = GsonBuilder()

@@ -63,7 +63,7 @@ class RegisterActivity : AppCompatActivity() {
                 if (respon.success == 1) {
                     com.app.i_commerce.widget.Snackbar(coordinatorLayout, "Regist Success").show()
                 } else {
-                    com.app.i_commerce.widget.Snackbar(coordinatorLayout, "Error" ).show()
+                    Toast.makeText(this@RegisterActivity, "Error:" + respon.message, Toast.LENGTH_SHORT).show()
                 }
 
             }

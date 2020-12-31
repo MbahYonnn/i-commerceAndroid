@@ -80,8 +80,11 @@ class LoginActivity : AppCompatActivity() {
                                 ).show()
 //                            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                             } else {
-                                com.app.i_commerce.widget.Snackbar(coordinatorLayout, "Error check form ")
-                                    .show()
+                                Toast.makeText(
+                                    this@LoginActivity,
+                                    "Error: " + respon.user.name,
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
 
